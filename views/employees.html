@@ -1,0 +1,25 @@
+{% extends './layout.html' %} {% block content %}
+        <form method='POST' action='/employees'>
+        <input name='email' placeholder = 'email'>
+        <select name= 'jobId'>
+            <option value='-1'>None</option>
+            {% for job in jobs %}
+            <option value='{{ job.id }}'>{{ job.name }}</option>
+            {% endfor %}
+        </select>
+        <button> Create Employee </button>
+    </form>
+        <ul>
+            {% for employee in employees %}
+            <li>
+                {{ employee.email }}
+                <br />
+                Email Provider: {{ employee.emailProvider }}
+                <br />
+                name: {{ employee.name }}
+                <br />
+                job: {{ employee.job.name }}
+            </li>
+            {%endfor%}
+        </ul>
+        {% endblock %}
